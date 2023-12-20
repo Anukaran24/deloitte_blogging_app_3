@@ -1,13 +1,11 @@
-// LoginForm.js
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 
-
-const LoginForm = () => {
+const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -16,22 +14,21 @@ const LoginForm = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleClick2=() =>{
+    axios.post('https://jsonplaceholder.typicode.com/users',{username:'hehe',password:'lmao',email:'abc@deloitte.com'}).then(function (response) {console.log(response);}).catch(function (error) {console.log(error);});
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can perform authentication logic here, like sending a request to a server.
+    // You can perform user registration logic here, like sending a request to a server.
     console.log('Username:', username);
     console.log('Password:', password);
-    // Add your authentication logic here, for example, sending data to a server.
-  };
-  const handleClick = () => {
-    axios.post('https://jsonplaceholder.typicode.com/users', { username: 'hehe', password: 'lmao' })
-      .then(function (response) { 
-        console.log(response);
-        // go to another page  
-        navigate('/Blog');
-      })
-      .catch(function (error) { console.log(error); });
-
+    console.log('Email:', email);
+    // Add your user registration logic here, for example, sending data to a server.
   };
 
   return (
@@ -46,11 +43,15 @@ const LoginForm = () => {
         <input type="password" value={password} onChange={handlePasswordChange} />
       </label>
       <br />
-      <button onClick={handleClick}>SUBMIT</button>
+      <label>
+        Email:
+        <input type="email" value={email} onChange={handleEmailChange} />
+      </label>
+      <br />
+      <button type="submit">Register</button>
       <button><Link to='/'>Back to home page</Link></button>
-      {/* <button><Link to='/Blog'>Submit</Link></button>     */}
     </form>
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
