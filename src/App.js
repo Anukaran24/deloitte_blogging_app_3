@@ -7,6 +7,7 @@ import Posts from './Posts';
 import RegisterationForm from './RegisterationForm';
 import WriteBlog from './WriteBlog';
 import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
