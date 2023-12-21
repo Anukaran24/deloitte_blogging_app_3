@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {Router, useNavigate} from 'react-router-dom';
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
  
 const Posts = () => {
+  var Navigate = useNavigate();
   const [posts, setPosts] = useState([]);
  
   useEffect(() => {
@@ -17,6 +19,11 @@ const Posts = () => {
         console.error("Error fetching posts:", error);
       });
   }, []);
+
+  function handleClick(id){
+    
+    Navigate(`/Post/` + id)
+  }
  
   return (
     <Container className="mt-4">
@@ -27,7 +34,7 @@ const Posts = () => {
               <Card.Body>
                 <Card.Title>{post.title}</Card.Title>
                 <Card.Text>{post.body}</Card.Text>
-                <Button id={post.id}>Read More</Button>
+                <Button id={post.id} onClick={() => handleClick(post.id)}>Read More</Button>
               </Card.Body>
             </Card>
           </Col>

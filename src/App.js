@@ -8,6 +8,7 @@ import RegisterationForm from './RegisterationForm';
 import WriteBlog from './WriteBlog';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import ReadMore from './ReadMore';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/Posts" element={<Posts/>}/>
+          <Route path="/Post/:id" element={<ReadMore/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/RegisterationForm" element={<RegisterationForm/>}/>
           <Route path="/WriteBlog" element={<WriteBlog/>}/>
